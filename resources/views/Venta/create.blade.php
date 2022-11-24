@@ -7,8 +7,7 @@
          <div class="card"> 
              <div class="card-header text-center">Registro Venta</div>
                 <div class="card-body">
-                    <form action="{{url('/ventas')}}" method="post" enctype="multipart/form-data">
-                    
+                    <form action="{{url('/venta/form')}}" method="post" enctype="multipart/form-data">
                         @include('venta.form')
                             @csrf
                         

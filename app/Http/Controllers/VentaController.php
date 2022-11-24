@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Modelo;
 use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas= Venta::with('modelo.marca')->get();
+        $ventas= Venta::with('modelo.marca')->get();        
         // dd($ventas); 
         return view('venta.index',compact('ventas'));
         
@@ -33,8 +33,10 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('venta.create');
+    {   
+        //dd('ddd');
+        
+        return view('venta.form', ['venta' => new Venta(), 'modelo' => new Modelo()]);
     }
 
     /**
@@ -78,8 +80,10 @@ class VentaController extends Controller
      */
     public function edit(Venta $venta)
     {
-        $vehiculo=Venta::findOrFail($venta);
-        return view('vehiculo.edit',compact('venta'));
+        
+        return view('venta.edit', ['venta' => new Venta(), 'modelo' => new Modelo()]);
+        // $venta=Venta::findOrFail($venta);
+        // return view('venta.edit',compact('venta'));
     }
 
     /**
@@ -92,13 +96,8 @@ class VentaController extends Controller
     public function update(Request $request, Venta $id_venta)
     {
         $datosVenta=request()->except('_token','_method');
-        
-
-
         venta::where('id','=',$id_venta)->update($datosVenta);
-        
-       
-        return redirect('marca/')->with('msn','marca actualizado exitosamente');
+        return redirect('ventas/')->with('msn','venta actualizada exitosamente');
     
     }
 

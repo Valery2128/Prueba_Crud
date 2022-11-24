@@ -20,15 +20,14 @@ Route::resource('ventas',VentaController::class);
 Route::resource('marcas',MarcaController::class);
 Route::resource('modelo',ModeloController::class);
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/', function () {
+Route::get('/venta/create', [App\Http\Controllers\VentaController::class, 'create']);
+Route::get('/venta/edit', [App\Http\Controllers\VentaController::class,'edit']);
+Route::get('/marca/create', [App\Http\Controllers\VentaController::class,'create']);
+Route::get('/venta', function () {
     
-    return view('welcome');
+    return view('index.venta');
 
   });
-
-
 // Route::get('/marca', function () {
 //     return view('index.marca'); 
 // });
