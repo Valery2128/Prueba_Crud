@@ -26,16 +26,35 @@
     </div>
     <div  class="container text-center">
         <h1>Bienvenido</h1> <br> <br>
+        {{$ventas[0]->created_at}}
+        {{$ventas[1]->nombre_marca}}
+        {{$ventas[2]->modelo}}
+        {{$ventas[3]->cantidad_venta}}
+        {{$ventas[4]->precio_unidad}}
+        {{$ventas[5]->total_venta}}
+        
     <table class="table container">
         <thead class="thead-dark">
             <tr>
           <th scope= "col">Fecha de venta</th>
-                    <th scope= "col">Marca</th>
-                    <th scope= "col">Modelo</th>
-                    <th scope= "col">Cantidad venta</th>
-                    <th scope= "col">Precio unidad</th>
-                    <th scope= "col">Total de venta</th>
+                    <th scope= "col">Fecha de venta :</th>
+                    <th scope= "col">Marca:</th>
+                    <th scope= "col">Modelo:</th>
+                    <th scope= "col">Cantidad venta:</th>
+                    <th scope= "col">Precio Unidad :</th>
+                    <th scope= "col">Total de venta:</th>
                 </thead>
+                @foreach($ventas as $item)
+                <td scope= "row" >{{ $item->created_at }}</td>
+                <td scope= "row" >{{ $item->marca }}</td>
+                <td scope= "row" >{{ $item->cantidad_venta}}</td>
+                <td scope= "row" >{{ $item->precio_unidad}}</td>
+                <td scope= "row" >{{ $item->total_venta}}</td>
+                
+
+                
+            
+                @endforeach
                 
                 
 

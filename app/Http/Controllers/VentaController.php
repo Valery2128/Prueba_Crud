@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
@@ -18,9 +20,11 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas= Venta::with('modelo')->get();
+        $ventas= Venta::with('modelo.marca')->get();
         // dd($ventas); 
-        return view('venta.index');
+        return view('venta.index',compact('ventas'));
+        
+          
     }
 
     /**

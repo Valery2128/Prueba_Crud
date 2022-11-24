@@ -13,33 +13,25 @@
 </div>
 @endif
 <div class="row mb-3">    
-    <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Venta : </label>
+        <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Venta : </label>
     <div class="col-md-6">
-
-         <input class="form-control" type="text" name="fecha_venta" value='{{isset($venta->id_venta)?$venta->id_venta:' '}}'id="id_venta"><br>
+        <input class="form-control" type="text" name="fecha_venta" value='{{isset($venta->id_venta)?$venta->id_venta:' '}}'id="id_venta"><br>
     </div> 
-    <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Cantidad : </label>
+        <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Cantidad : </label>
     <div class="col-md-6">
-
-         <input class="form-control" type="text" name="fecha_venta" value='{{isset($venta->cantidad_venta)?$venta->cantidad_venta:}}'id="cantidad_venta"><br>
+        <input class="form-control" type="text" name="fecha_venta" value='{{isset($venta->cantidad_venta)?$venta->cantidad_venta:}}'id="cantidad_venta"><br>
     </div> 
-    <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Total : </label>
+        <label class="col-md-4 col-form-label text-md-end" for="fecha_venta">Total : </label>
     <div class="col-md-6">
-
          <input class="form-control" type="text" name="fecha_venta" value='{{isset($venta->total_venta)?$venta->total_venta:' '}}'id="total_venta"><br>
     </div> 
-    <label class="col-md-4 col-form-label text-md-end" for="idMarcaFK">Modelo:  </label>
-        <div class="col-md-6">
+        <label class="col-md-4 col-form-label text-md-end" for="idMarcaFK">Modelo:  </label>
+    <div class="col-md-6">
         <select  class="form-control" value="{{isset($marca->fk_modelo)?$marca->fk_modelo:''}}" name="fk_modelo" id="fk_modelo" required>
             @foreach ($marca as $marca)
-            <option value="{{$marca['id_marca']}}">{{$marca['nombre_marca']}}</option>
+                <option value="{{$marca['id_marca']}}">{{$marca['nombre_marca']}}</option>
             @endforeach
         </select>
-    </div>
-   
-    <label class="col-md-4 col-form-label text-md-end" for="descripcion">Modelo: </label>
-    <div class="col-md-6">
-         <input class="form-control" type="text" name="descripcion"  value='{{isset($marca->id_marca)?$marca->id_marca:' '}}' id="id_marca"><br>
     </div> 
  </div>
  <div class="row mb-0">

@@ -12,6 +12,6 @@ class Modelo extends Model
     protected $primarykey = 'id_modelo';
     protected $fillable=['id_modelo', 'stock_modelo'];
     public function marca(){
-        return $this->belongsTo(Marca::class,'fk_marca');
+        return $this->belongsTo(Marca::class,'fk_marca','id_marca');
     }
 }
