@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Modelo;
 use App\Models\Marca;
-use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class MarcaController extends Controller
@@ -15,7 +14,9 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $ventas= Venta::all();
+        $marca= Marca::with('marca')->get();        
+        // dd($ventas);
+        return view('marca.index',compact('marcas'));
         
     }
 
@@ -26,7 +27,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('marca.form', ['marca' => new Marca(), 'modelo' => new Modelo()]);
     }
 
     /**
@@ -37,7 +38,10 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $marca=request()->except('_token','Enviar');
+        marca::insert($marca);
+        return redirect('index/')->with('msn','venta agregada exitosamente');
     }
 
     /**
@@ -71,7 +75,10 @@ class MarcaController extends Controller
      */
     public function update(Request $request, Marca $marca)
     {
-        //
+        
+        $marca=request()->except('_token','_method');
+        marca::where('id','=',$marca)->update($marca);
+        return redirect('marca/')->with('msn','venta actualizada exitosamente');
     }
 
     /**
