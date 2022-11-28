@@ -22,8 +22,8 @@ Route::resource('modelo',ModeloController::class);
 Auth::routes();
 Route::get('/venta/create', [App\Http\Controllers\VentaController::class, 'create']);
 Route::get('/venta/edit', [App\Http\Controllers\VentaController::class,'edit']);
-Route::get('/marca/create', [App\Http\Controllers\MarcaController::class,'create']);
-Route::get('/marca/edit', [App\Http\Controllers\MarcaController::class,'edit']);
+Route::get('/marca/create', [App\Http\Controllers\VentaController::class,'create']);
+Route::get('/marca/edit', [App\Http\Controllers\VentaController::class,'edit']);
 Route::get('/venta', function () {
     
     return view('index.venta');

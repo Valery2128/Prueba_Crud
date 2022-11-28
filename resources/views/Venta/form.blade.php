@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{!! asset('css/app.css') !!}">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
@@ -60,24 +61,37 @@
 
                     <label class="col-md-1 offset-md-1 col-form-label text-md-end" for="fecha_venta">Marca </label>
                     <div class="col-md-10 offset-md-1">
-                        <select class="form-control" value="valueSelect" name="nombre_marca" id="nombre_marca" required>
-                            <option value=""> Value</option>
+                        {{-- {{$marca ? $marca:}} --}}
+                        <select  class="form-control" value="{{isset($modelo->fk_marca)?$modelo->fk_marca:''}}" name="fk_marca" id="fk_marca" required>
+                            <option value="">Seleccione...</option>
+                            @foreach ($marca as $item)
+                            <option value="{{$item->id_marca}}">{{$item->nombre_marca}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-1 offset-md-1 col-form-label text-md-end" for="fecha_venta">Cantidad </label>
+                    <label class="col-md-1 offset-md-1 col-form-label text-md-end" for="">Cantidad </label>
                     <div class="col-md-10 offset-md-1">
-                        <input class="form-control" type="text" name="fecha_venta" value='value2'
-                            id="cantidad_venta"><br>
-                    </div>
+                    <input type="number" id="cantidad_venta">
+                    {{-- <select  class="form-control" value="{{isset($modelo->fk_marca)?$modelo->fk_marca:''}}" name="fk_marca" id="fk_marca" required>
+                        <option value="">Seleccione...</option>
+                        @foreach ($modelo as $item)
+                        <option value="{{$item->id_modelo}}">{{$item->nombre_modelo}}</option>
+                        @endforeach
+                    </select> --}}
+                </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-1 offset-md-1 col-form-label text-md-end" for="idMarcaFK">Modelo </label>
                     <div class="col-md-10 offset-md-1">
-                        <select class="form-control" value="valueSelect" name="fk_modelo" id="fk_modelo" required>
-                            <option value="value2">value2</option>
+                        <select  class="form-control" value="{{isset($modelo->fk_marca)?$modelo->fk_marca:''}}" name="fk_marca" id="fk_marca" required>
+                            <option value="">Seleccione...</option>
+                            @foreach ($modelo as $item)
+                            <option value="{{$item->id_modelo}}">{{$item->nombre_modelo}}</option>
+                            @endforeach
                         </select>
+
                     </div>
                 </div>
                 <div class="form-group ">

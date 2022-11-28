@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marca;
 use App\Models\Modelo;
 use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
@@ -34,14 +35,15 @@ class VentaController extends Controller
      */
     public function create()
     {   
-        //dd('ddd');
+        $marca= Marca::get();
+        $modelo =Modelo::get();
         
-        return view('venta.form', ['venta' => new Venta(), 'modelo' => new Modelo()]);
+        return view('venta.form', ['venta' => new Venta(), 'modelo' => new Modelo(), 'marca' => $marca, 'modelo'=>$modelo]);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
